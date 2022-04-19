@@ -4,10 +4,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class StudentDto {
+public class SubjectDto {
+    private String University;
+
     private String Name;
 
 //    private Integer JerseyNumber;
 
-    private String UniversityName;
+    private String Students;
 }

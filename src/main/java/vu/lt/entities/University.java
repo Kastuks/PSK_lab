@@ -27,8 +27,12 @@ public class University {
     private String name;
 
     @OneToMany(mappedBy = "university")
+//    @Column(name="STUDENT_ID")
     private List<Student> students = new ArrayList<>();
 
+
+//    @Column(name = "STUDENT_ID")
+//    private List<Student> students;
 
     @Override
     public boolean equals(Object o) {

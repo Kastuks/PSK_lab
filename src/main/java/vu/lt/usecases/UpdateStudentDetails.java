@@ -38,7 +38,7 @@ public class UpdateStudentDetails implements Serializable {
 
     @Transactional
     @LoggedInvocation
-    public String updateStudentJerseyNumber() {
+    public String updateStudentYear() {
         try{
             studentsDAO.update(this.student);
         } catch (OptimisticLockException e) {

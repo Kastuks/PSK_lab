@@ -1,10 +1,9 @@
 package vu.lt.rest;
 
-
 import lombok.*;
-import vu.lt.entities.Student;
-import vu.lt.persistence.StudentsDAO;
-import vu.lt.rest.contracts.StudentDto;
+import vu.lt.entities.Subject;
+import vu.lt.persistence.SubjectsDAO;
+import vu.lt.rest.contracts.SubjectDto;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -14,34 +13,30 @@ import javax.ws.rs.*;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
 
 @ApplicationScoped
-@Path("/students")
-public class StudentsController {
+@Path("/subjects")
+public class SubjectsController {
 
     @Inject
     @Setter @Getter
-    private StudentsDAO studentsDAO;
-
-    private List<Long> SubjectIds;
-
+    private SubjectsDAO subjectsDAO;
 
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("id") final Integer id) {
-        Student student = studentsDAO.findOne(id);
-        if (student == null) {
+        Subject subject = subjectsDAO.findOne(id);
+        if (subject == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
 
-        StudentDto studentDto = new StudentDto();
-        studentDto.setName(student.getName());
+        SubjectDto subjectDto = new SubjectDto();
+        subjectDto.setName(subject.getName());
 //        studentDto.setJerseyNumber(student.getJerseyNumber());
-        studentDto.setUniversityName(student.getUniversity().getName());
+//        subjectDto.setStudents(subject.getStudents().getName());
 
-        return Response.ok(studentDto).build();
+        return Response.ok(subjectDto).build();
     }
 
     @Path("/{id}")
@@ -49,16 +44,16 @@ public class StudentsController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
     public Response update(
-            @PathParam("id") final Integer studentId,
-            StudentDto studentData) {
+            @PathParam("id") final Integer subjectId,
+            SubjectDto subjectData) {
         try {
-            Student existingStudent = studentsDAO.findOne(studentId);
-            if (existingStudent == null) {
+            Subject existingSubject = subjectsDAO.findOne(subjectId);
+            if (existingSubject == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
-            existingStudent.setName(studentData.getName());
+            existingSubject.setName(subjectData.getName());
 //            existingStudent.setJerseyNumber(studentData.getJerseyNumber());
-            studentsDAO.update(existingStudent);
+            subjectsDAO.update(existingSubject);
             return Response.ok().build();
         } catch (OptimisticLockException ole) {
             return Response.status(Response.Status.CONFLICT).build();

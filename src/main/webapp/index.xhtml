@@ -16,6 +16,17 @@
         <h:inputText value="#{universities.universityToCreate.name}" required="true" />
         <h:commandButton value="Add new uni" action="#{universities.createUniversity}" />
     </h:form>
+    <h2>Subjects:</h2>
+    <ol>
+        <ui:repeat value="#{subjects.allSubjects}" var="subject">
+            <li><h:outputText value="#{subject.name}" /></li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText value="#{subjects.subjectToCreate.name}" required="true" />
+        <h:commandButton value="Add new subject" action="#{subjects.createSubject}" />
+    </h:form>
+
     <h:link outcome="myBatis/universities" value="MyBatis implementation" />
 </h:body>
 </html>

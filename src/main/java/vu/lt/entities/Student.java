@@ -3,6 +3,7 @@ package vu.lt.entities;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -24,8 +25,8 @@ public class Student implements Serializable {
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "JERSEY_NUMBER")
-    private Integer jerseyNumber;
+    @Column(name = "YEAR")
+    private Integer year;
 
     @ManyToOne
     @JoinColumn(name="UNIVERSITY_ID")
@@ -35,15 +36,14 @@ public class Student implements Serializable {
     @Column(name = "OPT_LOCK_VERSION")
     private Integer version;
 
+    @ManyToMany
+    @JoinTable(name="subjects", joinColumns = @JoinColumn(name = "student_id"),
+    inverseJoinColumns = @JoinColumn(name = "subject_id"))
+    @Column(name="SUBJECT_ID")
+    private List<Subject> subjects;
 
     public Student() {
     }
-
-//    public Student(String name) {
-//
-//        this.name = name;
-//    }
-
 
     @Override
     public boolean equals(Object o) {
