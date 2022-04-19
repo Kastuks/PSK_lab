@@ -24,6 +24,11 @@ public class SubjectsDAO {
         return em.find(Subject.class, id);
     }
 
+    public Subject findName(String name){
+
+        return em.find(Subject.class, name);
+    }
+
     public Subject update(Subject subject){
         return em.merge(subject);
     }

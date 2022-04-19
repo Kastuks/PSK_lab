@@ -19,6 +19,12 @@
             <f:param name="universityId" value="#{studentsForUniversity.university.id}" />
         </h:commandButton>
     </h:form>
+    <h2>All subjects: </h2>
+    <ol>
+        <ui:repeat value="#{subjects.allSubjects}" var="subject">
+            <li>#{subject.name}</li>
+        </ui:repeat>
+    </ol>
     <h:link outcome="/myBatis/universities" value="Back to universities page"/>
 </h:body>
 </html>

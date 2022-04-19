@@ -30,6 +30,13 @@ public class SubjectsForStudents implements Serializable {
     private Subject subjectToCreate = new Subject();
 
     @Getter @Setter
+    private Subject subjectToFind = new Subject();
+
+    private String subjectName = subjectToFind.getName();
+
+    private List<Subject> subjects;
+
+    @Getter @Setter
     private Student student;
 
     @Getter @Setter
@@ -49,6 +56,17 @@ public class SubjectsForStudents implements Serializable {
         subjectToCreate.setStudents(this.students);
         subjectsDAO.persist(subjectToCreate);
         return "/subjects.xhtml?faces-redirect=true&studentId=" + this.student.getId();
+    }
+    @Transactional
+    @LoggedInvocation
+    public void setSubject() {
+
+        Subject sub = subjectsDAO.findOne(1);
+//        subjects.add(sub);
+        subjects.add(subjectsDAO.findOne(1));
+
+//        student.setSubjects(subjects);
+        student.setSubjects(subjects);
     }
 
 }

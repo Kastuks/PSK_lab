@@ -26,8 +26,8 @@ public class Subject {
     @Column(name = "ID", nullable = false)
     private Integer id;
 
-    @Column(name = "UNIVERSITY")
-    private String university;
+//    @Column(name = "UNIVERSITY")
+//    private String university;
 
     @Column(name = "NAME", nullable = false)
     private String name;
