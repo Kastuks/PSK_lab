@@ -49,12 +49,6 @@ public class UpdateStudentDetails implements Serializable {
         this.student = studentsDAO.findOne(studentId);
     }
 
-//    @LoggedInvocation
-//    public void addSubject() {
-//        subjectList.add(subject);
-//        student.setSubjects(subjectList);
-//
-//    }
     @Transactional
     @LoggedInvocation
     public String updateStudentSubjects() {

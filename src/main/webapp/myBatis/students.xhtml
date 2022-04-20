@@ -21,7 +21,7 @@
     </h:form>
     <h2>All subjects: </h2>
     <ol>
-        <ui:repeat value="#{subjects.allSubjects}" var="subject">
+        <ui:repeat value="#{myBatisSubjectController.availableSubjects}" var="subject">
             <li>#{subject.name}</li>
         </ui:repeat>
     </ol>

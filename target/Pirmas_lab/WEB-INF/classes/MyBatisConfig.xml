@@ -6,6 +6,7 @@
     <typeAliases>
         <typeAlias type="vu.lt.mybatis.model.University" alias="University"/>
         <typeAlias type="vu.lt.mybatis.model.Student" alias="Student"/>
+        <typeAlias type="vu.lt.mybatis.model.Subject" alias="Subject"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -18,5 +19,6 @@
     <mappers>
         <mapper resource="mybatis.xml/UniversityMapper.xml"/>
         <mapper resource="mybatis.xml/StudentMapper.xml"/>
+        <mapper resource="mybatis.xml/SubjectMapper.xml"/>
     </mappers>
 </configuration>

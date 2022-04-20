@@ -12,6 +12,8 @@ import javax.persistence.SynchronizationType;
 
 @ApplicationScoped
 public class Resources {
+//    The entity manager implements the API and encapsulates all of them within a single interface.
+//    Entity manager is used to read, delete and write an entity.
 
     @PersistenceUnit
     private EntityManagerFactory emf;

@@ -5,11 +5,9 @@ import lombok.Setter;
 
 @Getter @Setter
 public class SubjectDto {
-    private String University;
+//    private String University;
 
     private String Name;
-
-//    private Integer JerseyNumber;
 
     private String Students;
 }
