@@ -6,6 +6,14 @@
                       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
         bean-discovery-mode="annotated">
 
+<!--    <alternatives>-->
+<!--        <class>vu.lt.persistence.AlternativeStudentsDAO</class>-->
+<!--    </alternatives>-->
+
+    <decorators>
+        <class>vu.lt.persistence.LongSubjectCreation</class>
+    </decorators>
+
     <interceptors>
         <class>vu.lt.interceptors.MethodLogger</class>
     </interceptors>

@@ -1,5 +1,9 @@
 package vu.lt.mybatis.model;
 
+import vu.lt.entities.Subject;
+
+import java.util.List;
+
 public class Student {
     /**
      *
@@ -44,7 +48,20 @@ public class Student {
      * @return the value of PUBLIC.STUDENT.ID
      *
      * @mbg.generated Tue Apr 19 23:57:44 EEST 2022
+     *
      */
+
+
+    private List<Subject> subjects;
+
+    public List<Subject> getSubjects(){return subjects; }
+
+    public void setSubjects(List<Subject> subjects)
+    {
+        this.subjects = subjects;
+    }
+
+
     public Integer getId() {
         return id;
     }

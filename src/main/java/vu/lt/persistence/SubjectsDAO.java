@@ -10,12 +10,12 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @ApplicationScoped
-public class SubjectsDAO {
+public class SubjectsDAO implements vu.lt.persistence.Subject {
     @Inject
     private EntityManager em;
 
     public void persist(Subject subject){
-
+        System.out.println("SubjectsDAO grizom");
         this.em.persist(subject);
     }
 

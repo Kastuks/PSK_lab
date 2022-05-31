@@ -6,7 +6,9 @@ import vu.lt.persistence.SubjectsDAO;
 import vu.lt.rest.contracts.SubjectDto;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;

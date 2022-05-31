@@ -7,7 +7,7 @@ import lombok.Setter;
 public class StudentDto {
     private String Name;
 
-//    private Integer JerseyNumber;
+    private Integer Year;
 
-    private String UniversityName;
+    private Integer UniversityId;
 }

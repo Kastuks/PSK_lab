@@ -10,7 +10,7 @@
     <h2>Students studying in #{studentsForUniversity.university.name} university:</h2>
     <ol>
         <ui:repeat value="#{studentsForUniversity.university.students}" var="student">
-            <li>#{student.name}</li>
+            <li><h:link value="#{student.name}" outcome="studentDets?studentId=#{student.id}" /></li>
         </ui:repeat>
     </ol>
     <h:form>

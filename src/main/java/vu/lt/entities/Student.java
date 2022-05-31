@@ -11,7 +11,8 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Student.findAll", query = "select a from Student as a")
+        @NamedQuery(name = "Student.findAll", query = "select a from Student as a"),
+        @NamedQuery(name = "Student.findById", query = "select i from Student as i where i.id = :id"),
 })
 @Table(name = "STUDENT")
 @Getter @Setter
@@ -43,6 +44,16 @@ public class Student implements Serializable {
     private List<Subject> subjects;
 
     public Student() {
+    }
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    public Student(String name, Integer year, University university) {
+        this.name = name;
+        this.year = year;
+        this.university = university;
     }
 
     @Override

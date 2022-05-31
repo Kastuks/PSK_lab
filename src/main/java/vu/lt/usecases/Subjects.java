@@ -17,6 +17,9 @@ public class Subjects {
     @Inject
     private SubjectsDAO subjectsDAO;
 
+    @Inject
+    private vu.lt.persistence.Subject subjectsDEC;
+
     @Getter @Setter
     private Subject subjectToCreate = new Subject();
 
@@ -30,7 +33,7 @@ public class Subjects {
 
     @Transactional
     public String createSubject(){
-        this.subjectsDAO.persist(subjectToCreate);
+        this.subjectsDEC.persist(subjectToCreate);
         return "index?faces-redirect=true";
     }
 

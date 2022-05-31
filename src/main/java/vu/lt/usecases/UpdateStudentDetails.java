@@ -8,6 +8,7 @@ import vu.lt.entities.Subject;
 import vu.lt.interceptors.LoggedInvocation;
 import vu.lt.persistence.StudentsDAO;
 import vu.lt.persistence.SubjectsDAO;
+import vu.lt.persistence.StudentsInterface;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -28,6 +29,8 @@ public class UpdateStudentDetails implements Serializable {
 
     private Student student;
 
+    private Student studentToEdit = new Student();
+
     private Subject subject;
 
     private Integer number;
@@ -35,7 +38,7 @@ public class UpdateStudentDetails implements Serializable {
     private List<Subject> subjectList =  new ArrayList<>();
 
     @Inject
-    private StudentsDAO studentsDAO;
+    private StudentsInterface studentsDAO;
 
     @Inject
     private SubjectsDAO subjectsDAO;
@@ -66,16 +69,32 @@ public class UpdateStudentDetails implements Serializable {
         } catch (OptimisticLockException e) {
             return "/studentDetails.xhtml?faces-redirect=true&studentId=" + this.student.getId() + "&error=optimistic-lock-exception";
         }
-        return "students.xhtml?universityId=" + this.student.getUniversity().getId() + "&faces-redirect=true";
+        return "studentDetails.xhtml?studentId=" + this.student.getId();
     }
     @Transactional
     @LoggedInvocation
-    public String updateStudentYear() {
+    public String updateStudentYear(int year) {
+        this.student.setYear(year);
         try{
+
             studentsDAO.update(this.student);
         } catch (OptimisticLockException e) {
+            e.printStackTrace();
             return "/studentDetails.xhtml?faces-redirect=true&studentId=" + this.student.getId() + "&error=optimistic-lock-exception";
         }
-        return "students.xhtml?universityId=" + this.student.getUniversity().getId() + "&faces-redirect=true";
+        return "studentDetails.xhtml?studentId=" + this.student.getId() + "&faces-redirect=true";
     }
+
+    @Transactional
+    public String updateStudentYear1() {
+        String redirect = "studentDetails.xhtml?faces-redirect=true&studentId=" + this.student.getId();
+        try {
+            studentsDAO.update(student);
+        } catch (OptimisticLockException e) {
+            e.printStackTrace();
+            return redirect + "&error=optimistic-lock-exception";
+        }
+        return redirect;
+    }
+
 }
